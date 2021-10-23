@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3" type="plugin" group="vmcustom"  method="upgrade">
+        <name>Vm Reward Points</name>
+        <author>dromanakis</author>
+        <creationDate>2015 April</creationDate>
+        <copyright>VRP Team</copyright>
+        <license>GNU General Public License</license>
+        <authorEmail>d.romanakis@outlook.com</authorEmail>
+        <authorUrl>http://vmpoints.romanakis.com</authorUrl>
+        <version>1.0</version>
+        <description>Reward Points for Virtuemart! Every time a buyment is confirmed, customer earns points.</description>
+        <files>
+                <filename plugin="vmRewardPoints">vmRewardPoints.php</filename>
+                <filename>index.html</filename>
+        </files>
+   <config>
+                <fields name="params">
+ 
+                        <fieldset name="basic">
+				<field name="integrate" type="radio" default="0" label="Integration: " description="Choose whether you have AUP (any version) installed or not">
+  				<option value="0">None</option>
+ 				 <option value="1">Alpha User Points</option>
+			 </field>
+                        <field name="sync" type="list" default="1" label="Sync AUP Users Points" description="Ignore if you haven't Aup installed. This is usefull if 1)You install AUP in the future and want to copy the points 2)If you want to unistall AUP and don't loose user's points!">
+  				<option value="1">No</option>
+				<option value="2">Copy AUP values to vmPoints</option>
+				<option value="3">Copy vmPoints values to AUP</option>
+			</field>      
+			<field name="delon" type="radio" default="0" label="Delete Coupon after usage: " description="Deletes the coupon that was used on a buyment">
+  				<option value="0">No</option>
+ 				 <option value="1">Yes</option>
+			 </field>  
+             <field name="shiptax" type="radio" default="0" label="Include Taxes:" description="Incude Taxes for generating the user's points. If No, it will give points only according to the product's total prices.">
+                <option value="0">No</option>
+                 <option value="1">Yes</option>
+             </field>  
+			<field name="percentage" type="text"
+                                        default="100"
+                                        description="Enter the percentage of reward points which the user will get according to the payment amount"
+                                        label="Percentage %"
+                                        size="5"
+                                />
+                         <field name="status" type="radio" default="0" label="Reward Points are given:" description="Choose when the points should be given">
+  				<option value="0">When an order is confirmed</option>
+ 				 <option value="1">When the order status is set to shipped</option>
+			 </field>
+        <field name="mini" type="checkbox" label="Show Points Message:" description="Show the points that are being earned from the current purchase in a message on confirmation page" value="1" default="0" />
+        <field name="msg" type="text"
+                                        default="You just earned %points% from this purchase!"
+                                        description="Enter the msg that customers see's on confirmation page"
+                                        label="Message:"
+                                        size="5"
+                                />
+			 <field name="sendmail" type="checkbox" label="Send mail to customer when points are given" description="Sends mail to customer when points are given" value="1" default="0" />
+			<field name="subject" type="text"
+                                        default="Earned Points!"
+                                        description="Enter the subject of the email"
+                                        label="Subject:"
+                                        size="20"
+                                />
+			 <field name="mytextarea" type="textarea" default="Automated Mail: You 've earned points and your total points are %points% !" label="Enter email" description="" rows="10" cols="5" />
+			<field name="subject2" type="text"
+                                        default="Restored Points!"
+                                        description="Enter the subject of the email"
+                                        label="Subject:"
+                                        size="20"
+                                />
+			<field name="sendmail2" type="checkbox" label="Send mail to customer when order is cancelled" description="Sends mail to customer when an order is cancelled" value="1" default="0" />
+			 <field name="mytextarea2" type="textarea" default="Automated Mail: After cancellation of your order your points are restored back to %points% " label="Enter email" description="" rows="10" cols="5" />
+                        </fieldset>
+                </fields>
+        </config>
+</extension>
